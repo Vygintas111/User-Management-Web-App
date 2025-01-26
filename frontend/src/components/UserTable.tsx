@@ -96,8 +96,6 @@ const UserTable: React.FC = () => {
       return;
     }
 
-    console.log("Sending payload:", { action, userIds: selectedUsers });
-
     try {
       const userId = localStorage.getItem("userId");
       if (!userId) {

@@ -12,11 +12,6 @@ const RegisterForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Submitting registration form with:", {
-      name,
-      email,
-      password,
-    });
 
     try {
       const response = await fetch("http://localhost:5000/api/auth/register", {
@@ -24,10 +19,8 @@ const RegisterForm: React.FC = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),
       });
-      console.log("Response status:", response.status);
 
       const data = await response.json();
-      console.log("Response data:", data);
 
       if (data.message === "User registered successfully") {
         toast.success("Registration successful! Please log in");

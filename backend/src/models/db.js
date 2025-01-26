@@ -11,11 +11,6 @@ const connection = mysql.createConnection({
 connection.connect((err) => {
   if (err) throw err;
   console.log("Connected to MySQL database");
-
-  connection.query("SELECT 1 + 1 AS solution", (err, results) => {
-    if (err) throw err;
-    console.log("Test query result: ", results[0].solution);
-  });
 });
 
 module.exports = connection;
