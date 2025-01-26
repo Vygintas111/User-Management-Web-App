@@ -5,6 +5,8 @@ import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 interface User {
   id: number;
   name: string;
@@ -36,7 +38,7 @@ const UserTable: React.FC = () => {
         return;
       }
 
-      const response = await fetch("http://localhost:5000/api/users", {
+      const response = await fetch(`${backendUrl}/users`, {
         headers: {
           "user-id": userId,
         },
@@ -104,7 +106,7 @@ const UserTable: React.FC = () => {
         return;
       }
 
-      const response = await fetch("http://localhost:5000/api/users/action", {
+      const response = await fetch(`${backendUrl}/users/action`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

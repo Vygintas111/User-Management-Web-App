@@ -7,7 +7,7 @@ const checkAuth = require("./middleware/authMiddleware");
 const app = express();
 app.use(
   cors({
-    origin: "http://localhost:8080",
+    origin: "http://test4app.codespark.lt",
     credentials: true,
   })
 );
