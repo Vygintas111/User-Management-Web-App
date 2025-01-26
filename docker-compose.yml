@@ -37,9 +37,7 @@ services:
     environment:
       - "VITE_BACKEND_URL=http://test4app.codespark.lt/api"
     ports:
-      - "8080:5173"
-    volumes:
-      - ./frontend:/app
+      - "80:80"
     depends_on:
       - backend
 

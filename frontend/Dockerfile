@@ -7,9 +7,9 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Serve the app using a simple HTTP server
-FROM node:20
-WORKDIR /app
-COPY --from=build /app/dist ./dist
-RUN npm install -g serve
-EXPOSE 5173
-CMD ["serve", "-s", "dist", "-l", "5173"]
+FROM nginx:alpine
+RUN /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d
+COPY --from=build /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
