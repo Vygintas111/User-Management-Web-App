@@ -38,7 +38,7 @@ const UserTable: React.FC = () => {
         return;
       }
 
-      const response = await fetch(`${backendUrl}/users`, {
+      const response = await fetch(`${backendUrl}/api/users`, {
         headers: {
           "user-id": userId,
         },
@@ -106,7 +106,7 @@ const UserTable: React.FC = () => {
         return;
       }
 
-      const response = await fetch(`${backendUrl}/users/action`, {
+      const response = await fetch(`${backendUrl}/api/users/action`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
