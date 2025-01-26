@@ -1,8 +1,15 @@
+# Stage 1: Build the React app
+FROM node:20 AS build
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+# Stage 2: Serve the app using a simple HTTP server
 FROM node:20
 WORKDIR /app
-COPY package.json .
-RUN rm -rf node_modules package-lock.json && \
-    npm install && \
-    npm install rollup@latest
-COPY . .
-CMD ["npm", "run", "dev"]
+COPY --from=build /app/dist ./dist
+RUN npm install -g serve
+EXPOSE 5173
+CMD ["serve", "-s", "dist", "-l", "5173"]

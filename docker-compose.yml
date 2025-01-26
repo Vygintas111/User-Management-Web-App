@@ -25,5 +25,15 @@ services:
       DB_PASSWORD: secretpassword
       DB_NAME: user_management
 
+  frontend:
+    build: ./frontend
+    container_name: frontend-container
+    ports:
+      - "8080:5173"
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - backend
+
 volumes:
   mysql-data:
