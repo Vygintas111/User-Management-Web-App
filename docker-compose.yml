@@ -13,7 +13,10 @@ services:
       - ./backend/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   backend:
-    build: ./backend
+    restart: unless-stopped
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     container_name: backend-container
     ports:
       - "5000:5000"
@@ -26,8 +29,13 @@ services:
       DB_NAME: user_management
 
   frontend:
-    build: ./frontend
+    restart: unless-stopped
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
     container_name: frontend-container
+    environment:
+      - "VITE_BACKEND_URL=http://test4app.codespark.lt/api"
     ports:
       - "8080:5173"
     volumes:
