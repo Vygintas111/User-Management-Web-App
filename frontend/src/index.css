@@ -1,0 +1,43 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+.custom-outline-primary {
+  color: #0d6efd;
+  border-color: #0d6efd;
+  border-width: 2px;
+}
+
+.custom-outline-primary:hover {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.custom-outline-danger {
+  color: #0d6efd;
+  border-color: #dc3545;
+  border-width: 2px;
+  color: #dc3545;
+}
+
+.custom-outline-danger:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .form-container {
+    width: 90% !important;
+    max-width: 400px !important;
+    min-width: 280px !important;
+    padding: 20px !important;
+  }
+}
