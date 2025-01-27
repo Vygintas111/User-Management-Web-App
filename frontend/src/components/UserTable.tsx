@@ -5,7 +5,14 @@ import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
+// http://localhost:5000
+// http://test4app.codespark.lt
+const backendUrl =
+  import.meta.env.VITE_BACKEND_URL || "http://test4app.codespark.lt";
+console.log(
+  "(UserTable) Sending request to:",
+  import.meta.env.VITE_BACKEND_URL
+);
 
 interface User {
   id: number;

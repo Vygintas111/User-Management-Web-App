@@ -4,7 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
+// http://localhost:5000
+// http://test4app.codespark.lt
+const backendUrl =
+  import.meta.env.VITE_BACKEND_URL || "http://test4app.codespark.lt";
+const apiUrl = `${backendUrl}/api/auth/login`;
+
+console.log("Backend URL (LoginForm before handleSubmit):", backendUrl); // Log the backend API
+console.log("API Endpoint (LoginForm before handleSubmit):", apiUrl); // Log the full API endpoint
 
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -14,14 +21,25 @@ const LoginForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // http://localhost:5000
+    // http://test4app.codespark.lt
+    const backendUrl =
+      import.meta.env.VITE_BACKEND_URL || "http://test4app.codespark.lt";
+    const apiUrl = `${backendUrl}/api/auth/login`;
+
+    console.log("Backend URL (LoginForm before handleSubmit):", backendUrl);
+    console.log("API Endpoint (LoginForm before handleSubmit):", apiUrl);
+
     try {
-      const response = await fetch(`${backendUrl}/api/auth/login`, {
+      const response = await fetch(apiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
 
+      console.log("Response status:", response.status);
       const data = await response.json();
+      console.log("Response data:", data);
 
       if (response.ok) {
         localStorage.setItem("userId", data.user.id);
