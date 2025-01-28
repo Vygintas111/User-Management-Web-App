@@ -7,6 +7,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 // http://localhost:5000
 // http://test4app.codespark.lt
+
 const backendUrl =
   import.meta.env.VITE_BACKEND_URL || "http://test4app.codespark.lt";
 console.log(
