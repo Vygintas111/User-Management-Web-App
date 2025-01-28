@@ -10,10 +10,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 const backendUrl =
   import.meta.env.VITE_BACKEND_URL || "http://test4app.codespark.lt";
-console.log(
-  "(UserTable) Sending request to:",
-  import.meta.env.VITE_BACKEND_URL
-);
+console.log("(UserTable) Sending request to:", backendUrl);
 
 interface User {
   id: number;
@@ -37,6 +34,10 @@ const UserTable: React.FC = () => {
   });
   const navigate = useNavigate();
 
+  const backendUrl =
+    import.meta.env.VITE_BACKEND_URL || "http://test4app.codespark.lt";
+  console.log("(UserTable) Sending request to:", backendUrl);
+
   const fetchUsers = async () => {
     try {
       const userId = localStorage.getItem("userId");
@@ -46,7 +47,9 @@ const UserTable: React.FC = () => {
         return;
       }
 
-      const response = await fetch(`${backendUrl}/api/users`, {
+      const apiUrl = `${backendUrl}/api/users`;
+
+      const response = await fetch(apiUrl, {
         headers: {
           "user-id": userId,
         },
@@ -114,7 +117,9 @@ const UserTable: React.FC = () => {
         return;
       }
 
-      const response = await fetch(`${backendUrl}/api/users/action`, {
+      const apiUrl = `${backendUrl}/api/users/action`;
+
+      const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
